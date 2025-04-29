@@ -20,3 +20,4 @@ jobs:
     uses: spaenleh/repo-infra/.github/workflows/apply-migration.yml@main
     with:
       config-path: .github/labeler.yml
+    secrets: inherit
