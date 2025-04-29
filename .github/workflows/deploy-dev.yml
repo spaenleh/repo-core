@@ -1,0 +1,22 @@
+name: Deploy to development environment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: print env var
+        run: echo ${{ vars.TEST_VAR }}
+
+  migration:
+    uses: spaenleh/repo-infra/.github/workflows/apply-migration.yml@main
+    with:
+      config-path: .github/labeler.yml
